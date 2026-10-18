@@ -3,55 +3,24 @@ elaborate-lastfm-charts
 
 Amazing Last.fm charts.
 
-Installation
-------------
+A static site: the browser talks to the [Last.fm API](https://www.last.fm/api)
+directly and caches weekly charts of past weeks in IndexedDB. There is no
+build step and no server.
 
-To install the application you need Python 3.5 or later and a stable Node.js.
-Also you need Redis to cache the data from Last.fm.
+Running locally
+---------------
 
--   Clone the repository:
+Serve the `site` directory with any static web server:
 
-    ```bash
-    git clone https://github.com/Perlence/elaborate-lastfm-charts.git
-    cd elaborate-lastfm-charts
-    ```
+```bash
+python3 -m http.server -d site 8000
+```
 
--   Create and activate virtual environment:
+and open <http://localhost:8000/>.
 
-    ```bash
-    virtualenv env
-    . env/bin/activate
-    ```
+Deployment
+----------
 
--   Install requirements:
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-
--   Install Bower, CoffeeScript, and Sass:
-
-    ```bash
-    npm install
-    export PATH="$PWD/node_modules/.bin:$PATH"
-    ```
-
--   Install front-end dependencies using Bower:
-
-    ```bash
-    bower install
-    ```
-
--   Create a config from template:
-
-    ```bash
-    cp elaboratecharts/default.json elaboratecharts/config.json
-    ```
-
--   Put the actual values into the config.
-
-- Run the server:
-
-    ```bash
-    gunicorn elaboratecharts.app:app
-    ```
+Every push to `master` is deployed to GitHub Pages by
+`.github/workflows/pages.yml`. In the repository settings, set
+*Pages → Build and deployment → Source* to *GitHub Actions*.
