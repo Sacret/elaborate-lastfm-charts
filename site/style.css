@@ -2,6 +2,7 @@
   --sidebar-bg: #222;
   --sidebar-color: #9d9d9d;
   --sidebar-strip: 72px;
+  --github-height: 50px;
   --primary: #337ab7;
   --primary-dark: #286090;
   --warning-bg: #8a6d3b;
@@ -223,9 +224,12 @@ input:focus, select:focus {
   position: relative;
 }
 
+/* Stack above the GitHub icon: the hidden footer info may be shorter than it. */
 #settings-block.collapsed .share {
-  margin-left: auto;
+  bottom: var(--github-height);
   padding: 0 0 10px;
+  position: absolute;
+  right: 0;
   text-align: center;
   width: var(--sidebar-strip);
 }
@@ -251,6 +255,7 @@ input:focus, select:focus {
   left: 15px;
   padding: 8px;
   position: absolute;
+  text-align: left;
   width: 276px;
 }
 
@@ -278,6 +283,7 @@ input:focus, select:focus {
   background: #000;
   bottom: 0;
   color: var(--sidebar-color);
+  height: var(--github-height);
   opacity: 0;
   padding: 5px 16px;
   pointer-events: none;
